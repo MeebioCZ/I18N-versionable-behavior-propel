@@ -114,4 +114,18 @@ class I18NVersionableBehavior extends I18nBehavior
     {
         return $this->getTable()->getPhpName() . 'Id';
     }
+
+    public function getForeignColumnFilterName()
+    {
+        return 'filterBy' . $this->getForeignColumnPhpName();
+    }
+
+    public function getObjectBuilderModifier()
+    {
+        if (null === $this->objectBuilderModifier) {
+            $this->objectBuilderModifier = new I18NVersionableBehaviorObjectBuilderModifier($this);
+        }
+
+        return $this->objectBuilderModifier;
+    }
 }

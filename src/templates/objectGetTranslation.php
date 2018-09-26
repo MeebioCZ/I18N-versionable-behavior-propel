@@ -24,7 +24,8 @@ public function getTranslation($locale = '<?php echo $defaultLocale ?>', Connect
             $translation->set<?php echo $localeColumnName ?>($locale);
         } else {
             $translation = <?php echo $i18nQueryName ?>::create()
-                ->filterByPrimaryKey(array($this->getPrimaryKey(), $locale))
+                -><?php echo $foreignKeyFilterMethod ?>($this->getId())
+                ->filterByLocale($locale)
                 ->findOneOrCreate($con);
             $this->currentTranslations[$locale] = $translation;
         }
