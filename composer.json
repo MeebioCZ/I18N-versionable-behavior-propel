@@ -9,8 +9,8 @@
     },
     "type" : "propel-behavior",
     "extra": {
-        "name": "real-enum",
-        "class": "\\Ypsylon\\Propel\\Behavior\\I18NVersinableBehavior"
+        "name": "i18n-versionable",
+        "class": "\\Ypsylon\\Propel\\Behavior\\I18NVersionableBehavior"
     },
     "autoload":{
         "psr-4": {
