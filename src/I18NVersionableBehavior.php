@@ -1,6 +1,7 @@
 <?php
 
 namespace Ypsylon\Propel\Behavior\I18NVersionable;
+
 use Propel\Generator\Behavior\I18n\I18nBehavior;
 
 class I18NVersionableBehavior extends I18nBehavior
