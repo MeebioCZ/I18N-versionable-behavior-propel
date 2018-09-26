@@ -1,16 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jakub
- * Date: 09/26/18
- * Time: 11:33
- */
 
-namespace App\Presenters;
-
-
+namespace Ypsylon\Propel\Behavior\I18NVersionable;
 use Propel\Generator\Behavior\I18n\I18nBehavior;
-use Propel\Generator\Behavior\Versionable\VersionableBehavior;
 
 class I18NVersionableBehavior extends I18nBehavior
 {
