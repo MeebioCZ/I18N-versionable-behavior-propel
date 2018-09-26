@@ -1,0 +1,22 @@
+{
+    "name": "ypsylon/i18n-versionable-behavior",
+    "description": "Versionable i18n behavior for propel",
+    "license": "MIT",
+    "keywords": ["propel", "behavior", "i18n", "versionable"],
+    "require": {
+        "php": ">= 5.3.7",
+        "propel/propel": "~2.0@dev"
+    },
+    "type" : "propel-behavior",
+    "extra": {
+        "name": "real-enum",
+        "class": "\\Ypsylon\\Propel\\Behavior\\I18NVersinableBehavior"
+    },
+    "autoload":{
+        "psr-4": {
+            "Ypsylon\\Propel\\Behavior\\":[
+                "src"
+            ]
+        }
+    }
+}
