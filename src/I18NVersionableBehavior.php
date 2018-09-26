@@ -23,7 +23,7 @@ class I18NVersionableBehavior extends I18nBehavior
        if (! $this->i18nTable->hasColumn($localeColumnName)) {
            $this->i18nTable->addColumn([
                'name'       => $localeColumnName,
-               'type'       => PropelTypes::VARCHAR,
+               'type'       => PropelTypescd ::VARCHAR,
                'size'       => $this->getParameter('locale_length') ? (int) $this->getParameter('locale_length') : 5,
                'default'    => $this->getDefaultLocale(),
            ]);
@@ -42,7 +42,7 @@ class I18NVersionableBehavior extends I18nBehavior
 
            $versionBehavior = new VersionableBehavior();
            $versionBehavior->setParameters($versionParams);
-           $this->getTable()->addBehavior($versionBehavior);
+           $this->i18nTable->addBehavior($versionBehavior);
        }
    }
 }
