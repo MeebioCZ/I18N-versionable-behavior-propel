@@ -45,27 +45,24 @@ class I18NVersionableBehavior extends I18nBehavior
     {
         $table = $this->getTable();
         $i18nTable = $this->i18nTable;
+
+        // First add normal primary key
+        if (!$i18nTable->hasPrimaryKey()) {
+            $i18nTable->addColumn(['primaryKey' => true, 'name' => 'id', 'autoIncrement' => 'true', 'type' => 'INTEGER']);
+        }
+
         $pks = $this->getTable()->getPrimaryKey();
 
         if (count($pks) > 1) {
             throw new EngineException('The i18n behavior does not support tables with composite primary keys');
         }
 
-        // First add normal primary key
-        $column = new Column();
-        $column->setPrimaryKey(true);
-        $column->setName('id');
-        $column->setType('integer');
-        $column->setAutoIncrement(true);
-
-        if (!$i18nTable->hasColumn($column->getName())) {
-            $i18nTable->addColumn($column);
-        }
-
         // Now add foreign key column
         $column = $pks[0];
         $i18nColumn = clone $column;
         $i18nColumn->setPrimaryKey(false);
+        $i18nColumn->setName($this->getForeignColumnName());
+        $i18nColumn->setPhpName($this->getForeignColumnPhpName());
 
         if ($this->getParameter('i18n_pk_column')) {
             // custom i18n table pk name
@@ -106,5 +103,15 @@ class I18NVersionableBehavior extends I18nBehavior
             $versionBehavior->setParameters($versionParams);
             $this->i18nTable->addBehavior($versionBehavior);
         }
+    }
+
+    public function getForeignColumnName()
+    {
+        return $this->getTable()->getName() . '_id';
+    }
+
+    public function getForeignColumnPhpName()
+    {
+        return $this->getTable()->getPhpName() . 'Id';
     }
 }
