@@ -4,7 +4,9 @@ namespace Ypsylon\Propel\Behavior\I18NVersionable;
 
 use Propel\Generator\Behavior\I18n\I18nBehavior;
 use Propel\Generator\Behavior\Versionable\VersionableBehavior;
+use Propel\Generator\Exception\EngineException;
 use Propel\Generator\Model\Column;
+use Propel\Generator\Model\ForeignKey;
 use Propel\Generator\Model\PropelTypes;
 
 class I18NVersionableBehavior extends I18nBehavior
