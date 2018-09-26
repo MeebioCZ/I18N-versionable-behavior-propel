@@ -3,6 +3,7 @@
 namespace Ypsylon\Propel\Behavior\I18NVersionable;
 
 use Propel\Generator\Behavior\I18n\I18nBehavior;
+use Propel\Generator\Behavior\Versionable\VersionableBehavior;
 use Propel\Generator\Model\PropelTypes;
 
 class I18NVersionableBehavior extends I18nBehavior
