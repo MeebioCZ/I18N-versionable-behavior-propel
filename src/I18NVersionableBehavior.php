@@ -8,14 +8,21 @@ use Propel\Generator\Model\PropelTypes;
 
 class I18NVersionableBehavior extends I18nBehavior
 {
-
-    public function __construct()
-    {
-        $this->parameters['versionable'] = 'true';
-        $this->parameters['log_created_at'] = 'false';
-        $this->parameters['log_create_by'] = 'false';
-        $this->parameters['log_comment'] = 'false';
-    }
+    // default parameters value
+    protected $parameters = [
+        'i18n_table'        => '%TABLE%_i18n',
+        'i18n_phpname'      => '%PHPNAME%I18n',
+        'i18n_columns'      => '',
+        'i18n_pk_column'    => null,
+        'locale_column'     => 'locale',
+        'locale_length'     => 5,
+        'default_locale'    => null,
+        'locale_alias'      => '',
+        'versionable'       => 'true',
+        'log_created_at'    => 'false',
+        'log_created_by'    => 'false',
+        'log_comment'       => 'false'
+    ];
 
     protected function addLocaleColumnToI18n()
    {
