@@ -14,7 +14,7 @@
     },
     "autoload":{
         "psr-4": {
-            "Ypsylon\\Propel\\Behavior\\I18NVersionable":[
+            "Ypsylon\\Propel\\Behavior\\I18NVersionable\\":[
                 "src"
             ]
         }
