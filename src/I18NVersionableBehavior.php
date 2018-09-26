@@ -128,4 +128,40 @@ class I18NVersionableBehavior extends I18nBehavior
 
         return $this->objectBuilderModifier;
     }
+
+    protected function getAllTableColumnsPhpNames()
+    {
+        $names = [];
+        foreach ($this->getTable()->getColumns() as $column) {
+            $names[] = $column->getPhpName();
+        }
+
+        foreach ($this->getI18nColumns() as $column) {
+            $names[] = $column->getPhpName();
+        }
+
+        return $names;
+    }
+
+    public function getAllTableColumnsGetters()
+    {
+        $result = [];
+        $names = $this->getAllTableColumnsPhpNames();
+        foreach ($names as $name) {
+            $result[$name] = 'get' . $name;
+        }
+
+        return $result;
+    }
+
+    public function getAllTableColumnsSetters()
+    {
+        $result = [];
+        $names = $this->getAllTableColumnsPhpNames();
+        foreach ($names as $name) {
+            $result[$name] = 'set' . $name;
+        }
+
+        return $result;
+    }
 }
