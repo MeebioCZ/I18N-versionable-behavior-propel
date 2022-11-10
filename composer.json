@@ -4,7 +4,7 @@
     "license": "MIT",
     "keywords": ["propel", "behavior", "i18n", "versionable"],
     "require": {
-        "php": ">= 5.3.7",
+        "php": ">= 8.0",
         "propel/propel": "~2.0@dev"
     },
     "type" : "propel-behavior",
