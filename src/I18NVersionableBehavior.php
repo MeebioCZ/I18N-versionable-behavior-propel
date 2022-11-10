@@ -95,6 +95,7 @@ class I18NVersionableBehavior extends I18nBehavior
 
         if ($this->getParameter('versionable')) {
             $versionBehavior = new VersionableBehavior();
+            $versionBehavior->setName('versionable');
 
             $versionParams = $versionBehavior->getParameters();
             $versionParams['log_created_at'] = $this->getParameter('log_created_at');
