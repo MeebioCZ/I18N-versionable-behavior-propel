@@ -3,6 +3,7 @@
 namespace Ypsylon\Propel\Behavior\I18NVersionable;
 
 use Propel\Generator\Behavior\I18n\I18nBehavior;
+use Propel\Generator\Behavior\I18n\I18nBehaviorObjectBuilderModifier;
 use Propel\Generator\Behavior\Versionable\VersionableBehavior;
 use Propel\Generator\Exception\EngineException;
 use Propel\Generator\Model\Column;
@@ -107,22 +108,22 @@ class I18NVersionableBehavior extends I18nBehavior
         }
     }
 
-    public function getForeignColumnName()
+    public function getForeignColumnName(): string
     {
         return $this->getTable()->getName() . '_id';
     }
 
-    public function getForeignColumnPhpName()
+    public function getForeignColumnPhpName(): string
     {
         return $this->getTable()->getPhpName() . 'Id';
     }
 
-    public function getForeignColumnFilterName()
+    public function getForeignColumnFilterName(): string
     {
         return 'filterBy' . $this->getForeignColumnPhpName();
     }
 
-    public function getObjectBuilderModifier()
+    public function getObjectBuilderModifier(): ?I18nBehaviorObjectBuilderModifier
     {
         if (null === $this->objectBuilderModifier) {
             $this->objectBuilderModifier = new I18NVersionableBehaviorObjectBuilderModifier($this);
@@ -131,7 +132,7 @@ class I18NVersionableBehavior extends I18nBehavior
         return $this->objectBuilderModifier;
     }
 
-    protected function getAllTableColumnsPhpNames()
+    protected function getAllTableColumnsPhpNames(): array
     {
         $names = [];
         foreach ($this->getTable()->getColumns() as $column) {
@@ -145,7 +146,7 @@ class I18NVersionableBehavior extends I18nBehavior
         return $names;
     }
 
-    public function getAllTableColumnsGetters()
+    public function getAllTableColumnsGetters(): array
     {
         $result = [];
         $names = $this->getAllTableColumnsPhpNames();
@@ -156,7 +157,7 @@ class I18NVersionableBehavior extends I18nBehavior
         return $result;
     }
 
-    public function getAllTableColumnsSetters()
+    public function getAllTableColumnsSetters(): array
     {
         $result = [];
         $names = $this->getAllTableColumnsPhpNames();
