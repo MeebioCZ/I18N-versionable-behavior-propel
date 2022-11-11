@@ -8,7 +8,7 @@ use Propel\Generator\Model\PropelTypes;
 
 class I18NVersionableBehaviorObjectBuilderModifier extends I18nBehaviorObjectBuilderModifier
 {
-    protected function addGetTranslation()
+    protected function addGetTranslation(): string
     {
         $plural = false;
         $i18nTable = $this->behavior->getI18nTable();
