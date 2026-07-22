@@ -22,6 +22,6 @@ class I18NVersionableBehaviorObjectBuilderModifier extends I18nBehaviorObjectBui
             'i18nQueryName'    => $this->builder->getClassNameFromBuilder($this->builder->getNewStubQueryBuilder($i18nTable)),
             'i18nSetterMethod' => $this->builder->getRefFKPhpNameAffix($fk, $plural),
             'foreignKeyFilterMethod' => $this->behavior->getForeignColumnFilterName(),
-        ]);
+        ], __DIR__ . '/templates');
     }
 }
