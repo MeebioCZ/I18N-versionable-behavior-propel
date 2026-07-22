@@ -4,7 +4,9 @@ namespace Ypsylon\Propel\Behavior\I18NVersionable;
 
 use Propel\Generator\Behavior\I18n\I18nBehavior;
 use Propel\Generator\Behavior\I18n\I18nBehaviorObjectBuilderModifier;
+use Propel\Generator\Behavior\I18n\I18nBehaviorQueryBuilderModifier;
 use Propel\Generator\Behavior\Versionable\VersionableBehavior;
+use Propel\Generator\Builder\Om\AbstractOMBuilder;
 use Propel\Generator\Exception\EngineException;
 use Propel\Generator\Model\Column;
 use Propel\Generator\Model\ForeignKey;
@@ -27,6 +29,23 @@ class I18NVersionableBehavior extends I18nBehavior
         'log_created_by' => 'false',
         'log_comment' => 'false'
     ];
+
+    public function getQueryBuilderModifier(): ?I18nBehaviorQueryBuilderModifier
+    {
+        if (null === $this->queryBuilderModifier) {
+            $this->queryBuilderModifier = new I18NVersionableBehaviorQueryBuilderModifier($this);
+        }
+
+        return $this->queryBuilderModifier;
+    }
+
+    public function staticAttributes(AbstractOMBuilder $builder): string
+    {
+        return $this->renderTemplate('staticAttributes', [
+            'defaultLocale' => $this->getDefaultLocale(),
+        ], __DIR__ . '/templates/');
+    }
+
 
     protected function addLocaleColumnToI18n(): void
     {
@@ -166,5 +185,10 @@ class I18NVersionableBehavior extends I18nBehavior
         }
 
         return $result;
+    }
+
+    protected function getDirname(): string
+    {
+        return __DIR__;
     }
 }
