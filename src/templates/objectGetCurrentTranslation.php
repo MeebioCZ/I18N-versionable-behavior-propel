@@ -6,7 +6,7 @@
  *
  * @return <?= $i18nTablePhpName ?>
  */
-public function getCurrentTranslation(ConnectionInterface $con = null)
+public function getCurrentTranslation(?ConnectionInterface $con = null)
 {
     return $this->getTranslation($this->get<?= $localeColumnName ?>(), $con);
 }
